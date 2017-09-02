@@ -3,17 +3,18 @@ package leecode;
 public class RemoveNodeFromList {
 
 public ListNode removeNthFromEnd(ListNode head, int n) {
-//	    int length= 0;
-//	    while()
-//	    ListNode cur = head;
-//	    int count = head.;
-//        while(count>0){
-//        	cur = cur.next;
-//        	count--;
-//        }
-//	    cur.next = cur.next.next;
-//	    return head;
-	return new ListNode(0);
+ ListNode start = new ListNode(0);
+           start.next = head;
+           ListNode slow = start,fast = start;
+           while(n-->=0){
+        	   fast = fast.next;
+           }
+           while(fast!=null){
+        	   slow = slow.next;
+        	   fast = fast.next;
+           }
+           slow.next = slow.next.next;
+           return start.next;
     }
 
 
